@@ -1,5 +1,6 @@
 export default function QueryProcessor(query: string): string {
-  if (query.toLowerCase().includes("shakespeare")) {
+  query = query.toLowerCase().trim();
+  if (query.includes("shakespeare")) {
     return (
       "William Shakespeare (26 April 1564 - 23 April 1616) was an " +
       "English poet, playwright, and actor, widely regarded as the greatest " +
@@ -7,5 +8,12 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
-  return "";
+  if (query.includes("andrew")) {
+    return "bzchen"; 
+  }
+
+  return "No Match";
 }
+
+
+
