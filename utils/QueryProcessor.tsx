@@ -12,6 +12,9 @@ export default function QueryProcessor(query: string): string {
     return "bzchen"; 
   }
 
+  if (query.includes("your name")) {
+    return "name";
+  }
   return "No Match";
 }
 
