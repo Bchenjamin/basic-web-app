@@ -25,15 +25,42 @@ export default function QueryProcessor(query: string): string {
   if (query.includes("plus")) {
     let match = query.match(/\d+/g);
     let numbers = match ? match.map(Number) : [];
-    let ans = 0
+    let ans = 0;
 
     for (let i = 0; i < numbers.length; i++) {
       ans += numbers[i];
     }
     return ans.toString();
-    
   }
 
+
+  if (query.includes("a square and a cube:")) {
+    let match = query.match(/\d+/g); 
+    let numbers = match ? match.map(Number) : [];
+    for (let i = 0; i < numbers.length; i++) {
+      if (Number.isInteger(Math.pow(numbers[i], 1/2) && Number.isInteger(Math.pow(numbers[i], 1/3)))) {
+        return numbers[i].toString();
+      }
+    }
+    return "No Matc";
+  }
+
+  if (query.includes("multiplied by")) {
+    let match = query.match(/\d+/g);
+    let numbers = match ? match.map(Number) : [];
+    let ans = 1;
+
+    for (let i = 0; i < numbers.length; i++) {
+      ans *= numbers[i];
+    }
+    return ans.toString();
+  }
+
+  if (query.includes("minus")) {
+    let match = query.match(/\d+/g);
+    let numbers = match ? match.map(Number) : [];
+    return (numbers[0] - numbers[1]).toString();
+  }
 
   return "No Match";
 }
