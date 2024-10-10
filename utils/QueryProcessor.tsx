@@ -37,18 +37,19 @@ export default function QueryProcessor(query: string): string {
   if (query.includes("a square and a cube:")) {
     let match = query.match(/\d+/g); 
     let numbers = match ? match.map(Number) : [];
+    let ans = [];
     for (let i = 0; i < numbers.length; i++) {
-      if (Number.isInteger(Math.pow(numbers[i], 1/2) && Number.isInteger(Math.pow(numbers[i], 1/3)))) {
-        return numbers[i].toString();
+      if (Number.isInteger(Math.sqrt(numbers[i])) && Number.isInteger(Math.cbrt(numbers[i]))) {
+          ans.push(numbers[i].toString());
       }
     }
-    return "No Matc";
+    return ans.length > 0 ? ans.join(", ") : "No Match";
   }
 
   if (query.includes("to the power of")) {
     let match = query.match(/\d+/g); 
     let numbers = match ? match.map(Number) : [];
-    return Math.pow(numbers[0], numbers[1]).toString();
+    return (numbers[0] ** numbers[1]).toString();
   }
 
   function isPrime(num: number): boolean {
