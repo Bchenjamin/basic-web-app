@@ -15,6 +15,26 @@ export default function QueryProcessor(query: string): string {
   if (query.includes("your name")) {
     return "BenAkshra";
   }
+
+  if (query.includes("largest:")) {
+    let match = query.match(/\d+/g);
+    let numbers = match ? match.map(Number) : [];
+    return Math.max(...numbers).toString();
+  }
+
+  if (query.includes("plus")) {
+    let match = query.match(/\d+/g);
+    let numbers = match ? match.map(Number) : [];
+    let ans = 0
+
+    for (let i = 0; i < numbers.length; i++) {
+      ans += numbers[i];
+    }
+    return ans.toString();
+    
+  }
+
+
   return "No Match";
 }
 
