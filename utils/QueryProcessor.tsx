@@ -13,7 +13,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.includes("your name")) {
-    return "name";
+    return "BenAkshra";
   }
   return "No Match";
 }
